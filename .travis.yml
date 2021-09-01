@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - 13
+
+services:
+  - docker
+
+matrix:
+  fast_finish: true
+  include:
+    - env: lesson3_travis
+      before_script:
+        - cd ${TRAVIS_BUILD_DIR}/lesson-3-independent-releases/exercises/travis_ci
+        - npm install
+      script:
+        - docker --version
+        - docker build -t simple-node .
+        - docker tag simple-node drosvick/simple-node:latest
+      after_success:
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - docker push drosvick/simple-node
+on:
+  branch: master
