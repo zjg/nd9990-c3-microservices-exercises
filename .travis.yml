@@ -5,19 +5,24 @@ node_js:
 services:
   - docker
 
-matrix:
+env:
+  - DOCKER_IMAGE=udagram-reverseproxy
+  - DOCKER_IMAGE=udagram-frontend
+  - DOCKER_IMAGE=udagram-api-feed
+  - DOCKER_IMAGE=udagram-api-user
+
+jobs:
   fast_finish: true
-  include:
-    - env: lesson3_travis
-      before_script:
-        - cd ${TRAVIS_BUILD_DIR}/lesson-3-independent-releases/exercises/travis_ci
-        - npm install
-      script:
-        - docker --version
-        - docker build -t simple-node .
-        - docker tag simple-node drosvick/simple-node:latest
-      after_success:
-        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-        - docker push drosvick/simple-node
-on:
-  branch: master
+
+install:
+  - cd project/${DOCKER_IMAGE}
+  - npm install
+
+script:
+  - docker --version
+  - docker build -t ${DOCKER_IMAGE} .
+  - docker tag ${DOCKER_IMAGE} drosvick/${DOCKER_IMAGE}:latest
+
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push drosvick/${DOCKER_IMAGE}
