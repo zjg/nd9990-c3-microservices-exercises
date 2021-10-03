@@ -21,7 +21,7 @@ install:
 script:
   - docker --version
   - docker build -t ${DOCKER_IMAGE} .
-  - docker tag ${DOCKER_IMAGE} drosvick/${DOCKER_IMAGE}:v1
+  - docker tag ${DOCKER_IMAGE} drosvick/${DOCKER_IMAGE}:v3
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
