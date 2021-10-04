@@ -1,0 +1,124 @@
+Name:              kubernetes
+Namespace:         default
+Labels:            component=apiserver
+                   provider=kubernetes
+Annotations:       <none>
+Selector:          <none>
+Type:              ClusterIP
+IP Family Policy:  SingleStack
+IP Families:       IPv4
+IP:                10.100.0.1
+IPs:               10.100.0.1
+Port:              https  443/TCP
+TargetPort:        443/TCP
+Endpoints:         172.31.20.196:443,172.31.35.70:443
+Session Affinity:  None
+Events:            <none>
+
+
+Name:                     publicfrontend
+Namespace:                default
+Labels:                   app=frontend
+Annotations:              <none>
+Selector:                 app=frontend
+Type:                     LoadBalancer
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.100.227.117
+IPs:                      10.100.227.117
+LoadBalancer Ingress:     aab5ad3b3cd8f4bdea4134e76add62b1-956150449.us-west-2.elb.amazonaws.com
+Port:                     <unset>  80/TCP
+TargetPort:               80/TCP
+NodePort:                 <unset>  30351/TCP
+Endpoints:                172.31.36.192:80,172.31.55.208:80
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+
+
+Name:                     publicrproxy
+Namespace:                default
+Labels:                   app=reverseproxy
+Annotations:              <none>
+Selector:                 app=reverseproxy
+Type:                     LoadBalancer
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.100.226.182
+IPs:                      10.100.226.182
+LoadBalancer Ingress:     a9cae5fef4fa94b97a12b3e30bda0ced-1150373766.us-west-2.elb.amazonaws.com
+Port:                     <unset>  8080/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset>  32022/TCP
+Endpoints:                172.31.36.162:8080,172.31.56.116:8080
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+
+
+Name:              udagram-api-feed
+Namespace:         default
+Labels:            <none>
+Annotations:       <none>
+Selector:          app=api-feed
+Type:              ClusterIP
+IP Family Policy:  SingleStack
+IP Families:       IPv4
+IP:                10.100.170.135
+IPs:               10.100.170.135
+Port:              <unset>  8080/TCP
+TargetPort:        8080/TCP
+Endpoints:         172.31.37.62:8080,172.31.40.223:8080,172.31.49.59:8080
+Session Affinity:  None
+Events:            <none>
+
+
+Name:              udagram-api-user
+Namespace:         default
+Labels:            <none>
+Annotations:       <none>
+Selector:          app=api-user
+Type:              ClusterIP
+IP Family Policy:  SingleStack
+IP Families:       IPv4
+IP:                10.100.67.224
+IPs:               10.100.67.224
+Port:              <unset>  8080/TCP
+TargetPort:        8080/TCP
+Endpoints:         172.31.37.244:8080,172.31.62.25:8080
+Session Affinity:  None
+Events:            <none>
+
+
+Name:              udagram-frontend
+Namespace:         default
+Labels:            <none>
+Annotations:       <none>
+Selector:          app=frontend
+Type:              ClusterIP
+IP Family Policy:  SingleStack
+IP Families:       IPv4
+IP:                10.100.126.26
+IPs:               10.100.126.26
+Port:              <unset>  80/TCP
+TargetPort:        80/TCP
+Endpoints:         172.31.36.192:80,172.31.55.208:80
+Session Affinity:  None
+Events:            <none>
+
+
+Name:              udagram-reverseproxy
+Namespace:         default
+Labels:            <none>
+Annotations:       <none>
+Selector:          app=reverseproxy
+Type:              ClusterIP
+IP Family Policy:  SingleStack
+IP Families:       IPv4
+IP:                10.100.94.169
+IPs:               10.100.94.169
+Port:              <unset>  80/TCP
+TargetPort:        8080/TCP
+Endpoints:         172.31.36.162:8080,172.31.56.116:8080
+Session Affinity:  None
+Events:            <none>
