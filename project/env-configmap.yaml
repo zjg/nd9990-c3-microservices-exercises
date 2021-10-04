@@ -1,0 +1,11 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: env-configmap
+data:
+  POSTGRES_HOST: udagram.cg5ctqd7pf5d.us-west-2.rds.amazonaws.com
+  POSTGRES_DB: udagram
+  AWS_BUCKET: udagram-zjg-dev
+  AWS_REGION: us-west-2
+  AWS_PROFILE: default
+  JWT_SECRET: testing
